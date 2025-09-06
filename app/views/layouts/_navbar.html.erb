@@ -1,0 +1,20 @@
+<nav class="bg-purple-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="text-white font-bold text-xl">
+            <%= link_to "Linktree Rails", root_path, class: "text-white hover:text-gray-200" %>
+        </div>
+        <div class="flex space-x-4">
+            <%= link_to "Home", root_path, class: "text-white hover:text-gray-200" %>
+            <%= link_to "All Trees", all_trees_path, class: "text-white hover:text-gray-200" %>
+            <%= link_to "Trees", trees_path, class: "text-white hover:text-gray-200" %>
+            <% if user_signed_in? %>
+            <%= link_to "New Tree", new_tree_path, class: "text-white hover:text-gray-200" %>
+            <%= link_to "Profile", edit_user_registration_path, class: "text-white hover:text-gray-200" %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-white hover:text-gray-200" %>
+            <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "text-white hover:text-gray-200" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "text-white hover:text-gray-200" %>
+            <% end %>
+        </div>
+    </div>
+</nav>

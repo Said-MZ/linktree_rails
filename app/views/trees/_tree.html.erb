@@ -1,0 +1,46 @@
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-semibold text-gray-900 truncate"><%= tree.display_name %></h2>
+            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium
+        <%= case tree.style
+           when 'Classic' then 'bg-gray-100 text-gray-800'
+           when 'Modern' then 'bg-indigo-100 text-indigo-800'
+           when 'Minimal' then 'bg-gray-100 text-gray-600'
+           else 'bg-gray-100 text-gray-800'
+           end %>">
+                <%= tree.style %>
+            </span>
+        </div>
+
+        <div class="space-y-2 mb-4">
+            <% if tree.x.present? %>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span class="text-blue-500">𝕏</span>
+                <span class="truncate"><%= tree.x %></span>
+            </div>
+            <% end %>
+
+            <% if tree.instagram.present? %>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span class="text-pink-500">📷</span>
+                <span class="truncate"><%= tree.instagram %></span>
+            </div>
+            <% end %>
+
+            <% if tree.youtube.present? %>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span class="text-red-500">▶️</span>
+                <span class="truncate"><%= tree.youtube %></span>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <div class="text-xs text-gray-500">
+                by <%= tree.user.email.split('@').first %>
+            </div>
+            <%= link_to "View Tree", tree_path(tree), class: "bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition duration-300" %>
+        </div>
+    </div>
+</div>
